@@ -1,8 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,400;0,700;1,400&display=swap');
 
+@keyframes red-to-yellow {
+    0% {
+        color: red; 
+    }
+    50% {
+        color: blue; 
+    }
+    100% {
+        color: yellow; 
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(100%); 
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
 h1 {
-    color: #ff0000; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.792);
+    color: black; 
+    text-shadow: 2px 2px 4px rgba(55, 30, 30, 0.608);
+    animation: red-to-yellow 3s 2s both alternate infinite;
 }
 
 p {
@@ -16,27 +38,77 @@ p strong {
 }
 
 .bgimage {
-    width: 200px; 
+    overflow: hidden; 
+    display: flex; 
+    align-items: flex-end; 
+    justify-content: center; 
+    width: 50px; 
     height: 150px; 
     background: url('http://placekitten.com/500/300') center no-repeat green;
     background-size: cover; 
-    padding: 1rem; 
     color: white; 
     border-radius: 1rem 3rem; 
     box-shadow: 0px 0px 10px rgba(230, 5, 5, 0.824); 
+    transition: width 1s; 
+}
+
+.bgimage:hover .overlay {
+    transform: translateY(0);
+}
+
+.bgimage:hover .overlay {
+    animation: slide 1.5s both; 
 }
 
 .overlay {
     display: flex;
     justify-content: center; 
+    align-items: center;
     font-size: 2rem; 
     width: 100px; 
-    height: 120px; 
+    height: 60px; 
     font-weight: bold; 
     background: rgba(255, 255, 0, 0.3); 
+    padding: 0.5rem; 
     position: relative; 
-    top: -120px;
-    left: 60px; 
+    transform: translateY(100%); 
+    /* transition: transform 1.5s;  */
 }
 
+.overlay span {
+    opacity: 0; 
+}
 
+.bgimage:hover {
+    width: 250px; 
+}
+
+.bgimage:hover .overlay span {
+    opacity: 1; 
+    transition: opacity 1s 1.5s;
+    
+}
+
+#boxes {
+    margin-top: 4rem; 
+    width: 300px; 
+    border: 1px solid green; 
+}
+
+#boxes div {
+    width: 100px; 
+    height: 100px; 
+    display: inline-block; 
+    padding: 5px; 
+    box-sizing: border-box; 
+}
+
+#boxes div:nth-of-type(1) {
+    background: purple;
+}
+#boxes div:nth-of-type(2) {
+    background: teal;
+}
+#boxes div:nth-of-type(3) {
+    background: orange;
+}
